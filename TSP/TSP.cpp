@@ -3,7 +3,8 @@ using namespace std;
 
 #define Inf INT_MAX
 
-class Node{
+class Node
+{
 public:
     int vertex;
     int cost;
@@ -35,7 +36,8 @@ public:
         cout << "Minimum row wise: ";
         
         // trying to find the minimum values row wise
-        for(int i=0; i<n; i++){
+        for(int i=0; i<n; i++)
+        {
             int mini = INT_MAX;
             for(int j=0; j<n; j++) mini = min(graph[i][j], mini);
             // if the minimum was inf then updating it to zero
@@ -96,13 +98,15 @@ int main()
         int mini=INT_MAX;
         Node minNode;
         int Index;
-        for(int i=1; i<n; i++){
+        for(int i=1; i<n; i++)
+        {
             if(visited[i] == 1) continue; // if already dead dont visit it
             // creating a node with vertex number and passing the parent graph to it
             Node n(i, last.graph);
             // cost calculation = row col cost + the edge cost from parent to current vertex
             int cost = n.calcCost(last.vertex, i) + last.graph[last.vertex][i];
-            if(mini > cost){
+            if(mini > cost)
+            {
                 mini = cost;
                 minNode = n;
                 Index = i;
@@ -119,7 +123,8 @@ int main()
         cout << "\n\n\n";
     }
     cout << "\nThe sequence found is: 0";
-    for(auto s : seq){
+    for(auto s : seq)
+    {
         cout << " -> " <<s;
     }
     cout << "\nThe total cost is: "<<totalCost;
