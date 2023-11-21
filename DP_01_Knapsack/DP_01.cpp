@@ -83,7 +83,7 @@ int main()
         }
         else
         {
-            cout<<"\nItem Picked: "<<i<<"\tIts Weight: "<<pw[i-1].first<<"\tIts Profit: "<<pw[i-1].second<<endl;
+            cout<<"\nItem Picked: "<<i<<"\tIts Weight: "<<pw[i].first<<"\tIts Profit: "<<pw[i].second<<endl;
             i--;
             j=j-pw[i-1].first;
         }

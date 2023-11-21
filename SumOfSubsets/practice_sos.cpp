@@ -2,34 +2,33 @@
 using namespace std;
 
 vector<int>subsets;
-int numberOfSubsets = 1;
-bool foundSubset = false;
+int numberofsubsets =1;
+bool found = false;
 
-void printSubset()
+void printSubsets()
 {
-    for(int i=0;i<subsets.size();i++)
-    {
+    for(int i=0; i<subsets.size(); i++){
         cout<<subsets[i]<<" ";
     }
     cout<<endl;
 }
 
-void sumOfSubsets(vector<int>set, vector<int>&subsets, int idx, int n,int target)
+void sumofsubsets(vector<int>set, vector<int>&subsets, int idx,int target, int n)
 {
     if(target==0)
     {
-        foundSubset = true;
-        cout<<"Subset Number "<<numberOfSubsets<<" found!!"<<endl;
-        printSubset();
-        numberOfSubsets++;
+        cout<<"Subset Number "<<numberofsubsets<<" found!"<<endl;
+        numberofsubsets++;
+        printSubsets();
+        found = true;
         return;
     }
-    if(idx==n) return;
-    sumOfSubsets(set, subsets, idx+1, n, target);
+    if(idx>=n) return;
+    sumofsubsets(set, subsets, idx+1, target, n);
     if(set[idx]<=target)
     {
         subsets.push_back(set[idx]);
-        sumOfSubsets(set, subsets, idx+1, n, target-set[idx]);
+        sumofsubsets(set, subsets, idx+1, target-set[idx], n);
         subsets.pop_back();
     }
 }
@@ -37,26 +36,16 @@ void sumOfSubsets(vector<int>set, vector<int>&subsets, int idx, int n,int target
 int main()
 {
     int n;
-    cout<<"Enter The Number of Elements in the Set: ";
+    cout<<"Enter the number of element: ";
     cin>>n;
     vector<int>set(n);
-    cout<<"Enter the Elements :";
-    for(int i=0;i<n;i++){
-        cin>>set[i];
-    }
+    cout<<"Enter the elements: ";
+    for(int i=0; i<n; i++) cin>>set[i];
 
     int target;
-    cout<<"Enter the Target Sum you are looking for: ";
+    cout<<"Enter the target sum: ";
     cin>>target;
 
-    sumOfSubsets(set,subsets,0,n,target);
-
-    if(!foundSubset)
-    {
-        cout<<"No Subset With the given sum found!!"<<endl;
-        return 0;
-    }else{
-        cout<<"Total "<<numberOfSubsets-1<<" Subsets Found!!"<<endl;
-    }
+    sumofsubsets(set, subsets, 0, target, n);    
     return 0;
 }

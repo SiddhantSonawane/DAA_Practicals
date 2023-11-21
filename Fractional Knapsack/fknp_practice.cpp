@@ -67,7 +67,7 @@ int main()
     {
         cin>>pw[i].first;
     }
-    cout<<"Enter profits of the items: "<<endl;
+    cout<<"Enter weights of the items: "<<endl;
     for(int i=0; i<items; i++)
     {
         cin>>pw[i].second;
